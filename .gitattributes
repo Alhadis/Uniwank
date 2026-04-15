@@ -1,0 +1,2 @@
+# Exclude manual-page from language statistics on GitHub
+share/man/** linguist-documentation
