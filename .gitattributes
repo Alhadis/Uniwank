@@ -1,2 +1,2 @@
 # Exclude manual-page from language statistics on GitHub
-share/man/** linguist-documentation
+uniwank.1 linguist-documentation
