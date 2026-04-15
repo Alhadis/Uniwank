@@ -1,4 +1,4 @@
-.Dd May 3, 2021
+.Dd April 15, 2026
 .Dt UNIWANK 1
 .Os
 .Sh NAME
@@ -6,6 +6,8 @@
 .Nd apply cutesy effects with Unicode symbols
 .
 .Sh SYNOPSIS
+.Nm uniwank
+.	Op Fl n | Fl -none
 .Nm uniwank
 .	Op Fl bBcCdfFimpqQrsStuw
 .	Op Fl ss
@@ -15,21 +17,20 @@
 .	Op Fl sc
 .	Op Fl sup
 .	Op Fl sub
-.Nm uniwank
-.	Op Fl n | Fl -none
 .
 .Sh DESCRIPTION
+.Pp
 In the first form,
+.Nm
+removes such effects from its input.
+This is the default behaviour if no effects are requested.
+.Pp
+In the second form,
 .Nm
 converts input to a stylised rendition by (ab)using lookalike Unicode symbols.
 See
 .Sx EFFECTS
 for a list of supported effects.
-.Pp
-In the second form,
-.Nm
-removes such effects from its input.
-This is the default behaviour if no effects are requested.
 .Pp
 In both such forms, text is read from the standard input and printed on the standard output.
 .
@@ -119,7 +120,12 @@ Convert capital Latin letters to solid-filled, squared forms.
 .
 .It Fl sc , Fl -caps , Fl -small-caps
 Convert capital letters
-.Pq except for Ql Q , Ql X , No and Ql Y
+.Po except for
+.Ql Q ,
+.Ql X ,
+and
+.Ql Y
+.Pc
 to small-cap variants.
 .
 .It Fl sup , Fl -superscript
@@ -152,28 +158,40 @@ Format a black metal band logo:
 .Dl Nm echo No Endstille | Nm Fl f
 .Pp
 Cheat YouTube's comment filter, maybe:
-.Dl Nm echo No Retard | Nm Fl ss
+.Dl Nm echo No Palestine | Nm Fl ss
 .Pp
 Troll whoever copy+pastes your code into their editor:
 .Dl Nm Fl -mono No < instruction-list.wast
 .
 .Sh SEE ALSO
 .Xr tr 1
+.
+.\" Replacement for groff_mdoc(7)'s `.Lk` macro, which I could've
+.\" sworn displayed URLs in terminal output until Groff 1.24.1...
+.de LINK
+.	ie t .Lk \\$1 \\$2 \\$3
+.	el   .No \\$2 Pq Em \\$1 \\$3
+..
+.
 .Pp
 The
-.Lk http://qaz.wtf/u/convert.cgi "web-based version"
+.LINK http://qaz.wtf/u/convert.cgi "web-based version"
 upon which
 .Nm
 was based.
+.
 .Pp
 The
-.Lk https://webassembly.github.io/simd/core/appendix/index-instructions.html page
-which inspired me to write this bullshit.
+.LINK https://webassembly.github.io/simd/core/appendix/index-instructions.html page
+which inspired me to write this bullshit back in 2021.
+As of this writing,
+the page appears to have fixed its absolutely munted use of MathJax text formatting,
+meaning users who copy+paste the table's contents won't fill their clipboard with garbage.
 .
 .Sh AUTHORS
-Copyright \(co 2021
+Copyright \(co 2021\(en2026
 .An "John Gardner"
 .Aq Mt gardnerjohng@gmail.com .
 .Pp
 Freely released under the
-.Lk https://opensource.org/licenses/ISC "ISC license" .
+.LINK https://opensource.org/licenses/ISC "ISC license" .
